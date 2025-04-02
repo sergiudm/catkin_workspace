@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Run Forward Kinematics",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "${workspaceFolder}/src/fwd_kinematics/src/transform.cpp",
+                "-o",
+                "${workspaceFolder}/src/fwd_kinematics/src/out",
+                "&&",
+                "${workspaceFolder}/src/fwd_kinematics/src/out"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}
