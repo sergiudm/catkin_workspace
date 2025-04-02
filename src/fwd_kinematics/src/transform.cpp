@@ -1,6 +1,7 @@
 #include <Eigen/Core>
 #include <Eigen/Dense>
 #include <cmath>
+#include <vector>
 
 Eigen::Matrix4d transform(Eigen::Vector4d DH_table) {
   Eigen::Matrix4d T;
@@ -52,18 +53,18 @@ Eigen::Matrix4d T_base2tool(Eigen::Vector4d thetas) {
 Eigen::VectorXd transformation(Eigen::Vector4d thetas) {
   Eigen::Matrix4d T = T_base2tool(thetas);
   Eigen::VectorXd result(6);
-  result(0) = T(0, 3);                            // x
-  result(1) = T(1, 3);                            // y
-  result(2) = T(2, 3);                            // z
-  result(3) = atan2(T(1, 0), T(0, 0)) * 180 / PI; // roll
+  result(0) = T(0, 3);                              // x
+  result(1) = T(1, 3);                              // y
+  result(2) = T(2, 3);                              // z
+  result(3) = atan2(T(1, 0), T(0, 0)) * 180 / M_PI; // roll
   result(4) = atan2(-T(2, 0), sqrt(T(2, 1) * T(2, 1) + T(2, 2) * T(2, 2))) *
-              180 / PI;                           // pitch
-  result(5) = atan2(T(2, 1), T(2, 2)) * 180 / PI; // yaw
+              180 / M_PI;                           // pitch
+  result(5) = atan2(T(2, 1), T(2, 2)) * 180 / M_PI; // yaw
   // Convert radians to degrees
   return result;
 }
 
 int main() {
-    Eigen::Vector4d test1 = {0, 0, 0, 0};
-    Eigen::Vector4d test2 = {0, 0, 0, 90};
+  Eigen::Vector4d test1 = {0, 0, 0, 0};
+  Eigen::Vector4d test2 = {0, 0, 0, 90};
 }
