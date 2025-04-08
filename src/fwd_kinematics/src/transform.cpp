@@ -1,6 +1,8 @@
 #include <Eigen/Core>
 #include <Eigen/Dense>
 #include <cmath>
+#include <iomanip>
+#include <ios>
 #include <iostream>
 #include <vector>
 
@@ -107,12 +109,14 @@ int main() {
   auto p4 = transformation(test4);
   auto p5 = transformation(test5);
 
+  std::cout << std::fixed << std::setprecision(3);
   std::cout << "t1: " << t1 << std::endl;
   std::cout << "t2: " << t2 << std::endl;
   std::cout << "t3: " << t3 << std::endl;
   std::cout << "t4: " << t4 << std::endl;
   std::cout << "t5: " << t5 << std::endl;
 
+  std::cout << std::fixed << std::setprecision(1);
   std::cout << "p1: " << p1.transpose() << std::endl;
   std::cout << "p2: " << p2.transpose() << std::endl;
   std::cout << "p3: " << p3.transpose() << std::endl;
