@@ -48,14 +48,16 @@ Eigen::Matrix4d T_base2tool(Eigen::VectorXd thetas) {
 
   Eigen::Vector4d l4 = {M_PI / 2.0, 0, 0.0285 + 0.0285, thetas[4] + M_PI};
 
-  Eigen::Vector4d l5 = {M_PI / 2.0, 0, 0.105 + 0.130, thetas[5] + M_PI};
+  Eigen::Vector4d l5 = {M_PI / 2.0, 0, 0.105 + 0.130, thetas[5] + M_PI / 2.0};
 
-  std::vector<Eigen::Vector4d> DH_tables = {l0, l1, l2, l3, l4, l5};
+  Eigen::Vector4d l6 = {0, 0, 0, M_PI / 2.0};
+
+  std::vector<Eigen::Vector4d> DH_tables = {l0, l1, l2, l3, l4, l5, l6};
 
   Eigen::Matrix4d T = Eigen::Matrix4d::Identity();
-  for (int i = 0; i < DH_tables.size(); i++) {
+  for (int i = 0; i < DH_tables.size(); i++)
     T = T * transform(DH_tables[i]);
-  }
+
   return T;
 }
 
