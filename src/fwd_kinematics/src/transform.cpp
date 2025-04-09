@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-Eigen::Matrix4d transform(Eigen::Vector4d DH_table) {
+Eigen::Matrix4d transform(const Eigen::Vector4d& DH_table) {
   Eigen::Matrix4d T;
   T.setIdentity();
   double alpha = DH_table[0];
@@ -37,7 +37,7 @@ Eigen::Matrix4d transform(Eigen::Vector4d DH_table) {
   return T;
 }
 
-Eigen::Matrix4d T_base2tool(Eigen::VectorXd thetas) {
+Eigen::Matrix4d T_base2tool(const Eigen::VectorXd& thetas) {
   Eigen::Vector4d l0 = {0, 0, 0.1283 + 0.115, thetas[0]};
 
   Eigen::Vector4d l1 = {M_PI / 2.0, 0, 0.030, thetas[1] + M_PI / 2.0};
@@ -61,7 +61,7 @@ Eigen::Matrix4d T_base2tool(Eigen::VectorXd thetas) {
   return T;
 }
 
-Eigen::VectorXd transformation(Eigen::VectorXd thetas) {
+Eigen::VectorXd transformation(Eigen::VectorXd& thetas) {
   // convert thetas to radians
   for (int i = 0; i < thetas.size(); i++) {
     thetas[i] = thetas[i] * M_PI / 180.0;
@@ -112,11 +112,11 @@ int main() {
   auto p5 = transformation(test5);
 
   std::cout << std::fixed << std::setprecision(3);
-  std::cout << "t1: " << t1 << std::endl;
-  std::cout << "t2: " << t2 << std::endl;
-  std::cout << "t3: " << t3 << std::endl;
-  std::cout << "t4: " << t4 << std::endl;
-  std::cout << "t5: " << t5 << std::endl;
+  std::cout << "t1: " << std::endl << t1 << std::endl;
+  std::cout << "t2: " << std::endl << t2 << std::endl;
+  std::cout << "t3: " << std::endl << t3 << std::endl;
+  std::cout << "t4: " << std::endl << t4 << std::endl;
+  std::cout << "t5: " << std::endl << t5 << std::endl;
 
   std::cout << std::fixed << std::setprecision(1);
   std::cout << "p1: " << p1.transpose() << std::endl;
