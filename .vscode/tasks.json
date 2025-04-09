@@ -8,9 +8,9 @@
             "args": [
                 "${workspaceFolder}/src/fwd_kinematics/src/transform.cpp",
                 "-o",
-                "${workspaceFolder}/src/fwd_kinematics/src/out",
+                "${workspaceFolder}/src/fwd_kinematics/src/out.out",
                 "&&",
-                "${workspaceFolder}/src/fwd_kinematics/src/out"
+                "${workspaceFolder}/src/fwd_kinematics/src/out.out"
             ],
             "group": {
                 "kind": "build",
